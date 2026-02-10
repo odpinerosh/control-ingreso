@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Test marcar</title>
+</head>
+<body style="font-family:system-ui; max-width:720px; margin:30px auto;">
+  <h2>Test /api/marcar.php</h2>
+
+  <p><b>Nota:</b> Debes estar en red corporativa (si no, 403).</p>
+
+  <label>Cédula</label><br>
+  <input id="cedula" value="1010205944" style="padding:10px; width:320px;"><br><br>
+
+  <label>Tipo</label><br>
+  <select id="tipo" style="padding:10px; width:340px;">
+    <option>ENTRADA</option>
+    <option>SALIDA_ALMUERZO</option>
+    <option>REGRESO_ALMUERZO</option>
+    <option>SALIDA</option>
+  </select><br><br>
+
+  <label>Sede</label><br>
+  <input id="sede" value="BOYACA" style="padding:10px; width:320px;"><br><br>
+
+  <label>Token (k)</label><br>
+  <input id="k" value="BOYACA-2026-K7P2M9Q4X1" style="padding:10px; width:320px;"><br><br>
+
+  <button id="btn" style="padding:12px 16px; font-weight:700;">Enviar POST</button>
+
+  <pre id="out" style="margin-top:20px; background:#f4f4f4; padding:12px; border-radius:10px;"></pre>
+
+  <script>
+    const out = document.getElementById('out');
+    document.getElementById('btn').addEventListener('click', async () => {
+      out.textContent = 'Enviando...';
+
+      const payload = {
+        cedula: document.getElementById('cedula').value.trim(),
+        tipo: document.getElementById('tipo').value.trim(),
+        sede: document.getElementById('sede').value.trim(),
+        k: document.getElementById('k').value.trim(),
+      };
+
+      try {
+        const r = await fetch('/control-ingreso/api/marcar.php', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify(payload)
+        });
+        const txt = await r.text();
+        out.textContent = `HTTP ${r.status}\n` + txt;
+      } catch (e) {
+        out.textContent = 'Error: ' + e;
+      }
+    });
+  </script>
+</body>
+</html>
