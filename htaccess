@@ -1,0 +1,7 @@
+<RequireAll>
+  Require all denied
+  Require ip 186.84.155.242
+  Require ip 186.84.155.244
+</RequireAll>
+
+Options -Indexes
