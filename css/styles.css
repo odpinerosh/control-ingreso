@@ -1,0 +1,96 @@
+body {
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    background:#f4f6f8;
+    margin:0;
+    padding:30px;
+}
+
+.card {
+    max-width:620px; 
+    margin:0 auto; 
+    background:#fff; 
+    border-radius:14px; 
+    padding:22px; 
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+}
+
+h1 {
+    margin:0 0 14px; 
+    font-size:22px;
+}
+
+label {
+    display:block; margin-top:10px; font-weight:600;
+}
+
+input {
+    width:100%; 
+    font-size:20px; 
+    padding:14px; 
+    border-radius:10px; 
+    border:1px solid #d0d7de; 
+    margin-top:6px;
+}
+
+.grid {
+    display:grid; 
+    grid-template-columns:1fr 1fr; 
+    gap:12px; 
+    margin-top:16px;
+}
+
+button {
+    padding:14px; 
+    border-radius:10px; 
+    border:1px solid #d0d7de;
+    background:#fff; 
+    cursor:pointer; 
+    font-weight:700; 
+    font-size:15px;
+}
+
+button:disabled {
+    opacity:.6; 
+    cursor:not-allowed;
+}
+
+.alert {
+    margin-top:14px; 
+    padding:12px 14px; 
+    border-radius:10px; 
+    font-weight:700;
+}
+
+.ok {
+    background:#e8fff0; 
+    border:1px solid #b7f0c8;
+}
+
+.err {
+    background:#ffecec; 
+    border:1px solid #ffc2c2;
+}
+
+.meta {
+    display:flex; 
+    justify-content:space-between; 
+    align-items:flex-end; 
+    gap:10px; 
+    margin-bottom:10px;
+}
+
+.small {
+    opacity:.7; 
+    font-size:12px;
+}
+
+.muted {
+    opacity:.8;
+}
+
+.hint {
+    margin-top:8px; 
+    font-size:12px; 
+    opacity:.75;
+}
+
