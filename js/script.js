@@ -24,6 +24,10 @@
       return;
     }
 
+    // Anti doble-clic / doble envío
+    if (window.__busyMark) return;
+    window.__busyMark = true;
+
     document.querySelectorAll('button[data-t]').forEach(b => (b.disabled = true));
 
     try {
@@ -38,13 +42,26 @@
       showMsg(data.msg || (data.ok ? 'OK' : 'Error'), !!data.ok);
 
       if (data.ok) {
+        
+        const ahora = new Date();
+        const hh = String(ahora.getHours()).padStart(2,'0');
+        const mm = String(ahora.getMinutes()).padStart(2,'0');
+        const ss = String(ahora.getSeconds()).padStart(2,'0');
+        const tipoBonito = (tipo || '').replaceAll('_',' ').toLowerCase();
+
+        showMsg(`${data.msg} · ${tipoBonito} · ${hh}:${mm}:${ss}`, true);
+
         cedulaEl.value = '';
         cedulaEl.focus();
-      }
+      } else {
+        showMsg(data.msg || 'Error', false);
+     }
+    
     } catch (e) {
       showMsg('No se pudo conectar al servidor.', false);
     } finally {
       document.querySelectorAll('button[data-t]').forEach(b => (b.disabled = false));
+      window.__busyMark = false;
     }
   }
 
