@@ -27,7 +27,7 @@ body{
 }
 
 .card{
-  max-width:860px;
+  max-width:760px;
   margin:0 auto;
   background:var(--card);
   border-radius:var(--r);
@@ -76,8 +76,8 @@ label{
 input{
   width:calc(100% - 44px);
   margin:0 22px;
-  font-size:22px;
-  padding:16px 16px;
+  font-size:20px;
+  padding:14px 16px;
   border-radius:16px;
   border:1px solid var(--line);
   outline:none;
@@ -99,7 +99,7 @@ input:active{ transform: translateY(1px); }
 }
 
 button{
-  padding:16px 16px;
+  padding:14px 16px;
   border-radius:16px;
   border:1px solid var(--line);
   background:#fff;
