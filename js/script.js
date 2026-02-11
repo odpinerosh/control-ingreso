@@ -27,7 +27,8 @@
     document.querySelectorAll('button[data-t]').forEach(b => (b.disabled = true));
 
     try {
-      const r = await fetch('../api/marcar.php', {
+      const apiUrl = new URL("api/marcar.php", window.location.href).toString();
+      const r = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ cedula, tipo, sede, k })
