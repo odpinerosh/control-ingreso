@@ -12,6 +12,7 @@ $k    = trim($_GET['k'] ?? '');
 </head>
 <body>
   <div class="card">
+    <div class="meta">
     <h1>Control de ingreso</h1>
 
     <?php if ($sede === '' || $k === ''): ?>
@@ -26,6 +27,7 @@ $k    = trim($_GET['k'] ?? '');
         <div><b>Sede:</b> <?= htmlspecialchars($sede) ?></div>
         <div class="small">* Solo red corporativa</div>
       </div>
+    </div>
 
       <label for="cedula">Cédula</label>
       <input
