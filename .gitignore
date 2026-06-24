@@ -1,0 +1,22 @@
+# ============================================================
+# .gitignore - Control de Ingreso
+# ============================================================
+
+# Configuración de producción (NUNCA versionar)
+config.php
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs
+*.log
+
+# Temporales PHP
+/tmp/

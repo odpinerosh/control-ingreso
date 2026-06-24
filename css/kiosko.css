@@ -1,0 +1,272 @@
+/*
+ * css/kiosko.css
+ * --------------
+ * Estilos del kiosko de Control de Ingreso.
+ * Diseño moderno, limpio, tipo pantalla de quiosco.
+ */
+
+/* ── Reset & base ─────────────────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Paleta principal */
+    --color-bg-from:  #1a2a4a;
+    --color-bg-to:    #0d1b2a;
+    --color-card:     #ffffff;
+    --color-header:   #1e3a6e;
+
+    /* Botones */
+    --color-entrada:  #1565c0;
+    --color-almuerzo: #f57c00;
+    --color-regreso:  #2e7d32;
+    --color-salida:   #6d4c41;
+
+    /* Texto */
+    --color-text:     #1a202c;
+    --color-muted:    #718096;
+    --color-white:    #ffffff;
+
+    /* Banners */
+    --color-ok-bg:    #e8f5e9;
+    --color-ok-border:#2e7d32;
+    --color-ok-text:  #1b5e20;
+    --color-err-bg:   #ffebee;
+    --color-err-border:#c62828;
+    --color-err-text: #b71c1c;
+
+    /* Sombras / radios */
+    --shadow-card:    0 20px 60px rgba(0,0,0,0.35);
+    --radius-card:    18px;
+    --radius-btn:     10px;
+    --radius-input:   10px;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    color: var(--color-text);
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(145deg, var(--color-bg-from) 0%, var(--color-bg-to) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+/* ── Wrapper y tarjeta ────────────────────────────────────── */
+.kiosko-wrapper {
+    width: 100%;
+    max-width: 480px;
+}
+
+.kiosko-card {
+    background: var(--color-card);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+.kiosko-header {
+    background: linear-gradient(135deg, var(--color-header) 0%, #102954 100%);
+    color: var(--color-white);
+    text-align: center;
+    padding: 2rem 1.5rem 1.75rem;
+    position: relative;
+}
+
+.kiosko-logo {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.85;
+}
+
+.kiosko-header h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+}
+
+.kiosko-sede {
+    margin-top: 0.45rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.75;
+}
+
+/* ── Cuerpo ───────────────────────────────────────────────── */
+.kiosko-body {
+    padding: 2rem 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* ── Campo cédula ─────────────────────────────────────────── */
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.field-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.field-group input {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.1em;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--radius-input);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    color: var(--color-text);
+    background: #f7fafc;
+}
+
+.field-group input:focus {
+    border-color: var(--color-entrada);
+    box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.15);
+    background: #fff;
+}
+
+/* ── Banner de resultado ──────────────────────────────────── */
+.banner {
+    padding: 0.85rem 1.1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: center;
+    border-left: 4px solid transparent;
+    transition: opacity 0.3s;
+}
+
+.banner--hidden {
+    display: none;
+}
+
+.banner--ok {
+    display: block;
+    background: var(--color-ok-bg);
+    border-color: var(--color-ok-border);
+    color: var(--color-ok-text);
+}
+
+.banner--error {
+    display: block;
+    background: var(--color-err-bg);
+    border-color: var(--color-err-border);
+    color: var(--color-err-text);
+}
+
+/* ── Grilla de botones ────────────────────────────────────── */
+.botones-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+/* ── Botones ──────────────────────────────────────────────── */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.85rem 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border: none;
+    border-radius: var(--radius-btn);
+    cursor: pointer;
+    color: var(--color-white);
+    transition: transform 0.1s, box-shadow 0.15s, filter 0.15s;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+}
+
+.btn:active {
+    transform: scale(0.97);
+    filter: brightness(0.95);
+}
+
+.btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-icon {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* Colores individuales */
+.btn--entrada  { background: var(--color-entrada);  grid-column: 1 / -1; }  /* ocupa toda la fila */
+.btn--almuerzo { background: var(--color-almuerzo); }
+.btn--regreso  { background: var(--color-regreso);  }
+.btn--salida   { background: var(--color-salida);   }
+
+/* ── Footer ───────────────────────────────────────────────── */
+.kiosko-footer {
+    text-align: center;
+    padding: 1rem;
+    color: var(--color-muted);
+    font-size: 0.78rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 400px) {
+    .kiosko-body {
+        padding: 1.5rem 1.25rem 1.25rem;
+    }
+
+    .kiosko-header h1 {
+        font-size: 1.3rem;
+    }
+
+    .field-group input {
+        font-size: 1.25rem;
+    }
+
+    .btn {
+        font-size: 0.85rem;
+        padding: 0.75rem 0.5rem;
+    }
+
+    .botones-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .btn--entrada {
+        grid-column: 1;
+    }
+}

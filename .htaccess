@@ -1,0 +1,25 @@
+# ============================================================
+# .htaccess - Control de Ingreso Cooperativa
+# Bloquea todo acceso externo; solo IPs corporativas autorizadas.
+# ============================================================
+
+# Requerir Apache mod_authz_core (disponible en Apache 2.4+)
+<RequireAll>
+    Require all denied
+
+    # IPs públicas autorizadas (salida NAT de sedes)
+    Require ip 186.84.155.242
+    Require ip 186.84.155.244
+
+    # Agregar más IPs aquí según se necesite:
+    # Require ip 200.xxx.xxx.xxx
+</RequireAll>
+
+# Ocultar listado de directorios
+Options -Indexes
+
+# No mostrar cabecera Server
+ServerSignature Off
+
+# Codificación por defecto
+AddDefaultCharset UTF-8
